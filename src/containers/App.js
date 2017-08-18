@@ -3,8 +3,8 @@ import logo from '../logo.svg';
 import './App.css';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as actions from './actions/bookActions';
-import Books from './components/Books';
+import * as actions from '../actions/bookActions';
+import Books from '../components/Books';
 
 class App extends Component {
   componentDidMount() {

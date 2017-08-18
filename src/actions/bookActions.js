@@ -1,5 +1,5 @@
 import 'fetch' from 'isomorphic-fetch';
 
 export function fetchBooks() {
-	return "Books fetching..."
+	return console.log("Fetching books...")
 }
