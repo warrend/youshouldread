@@ -3,6 +3,7 @@ import './App.css';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as actions from '../actions/bookActions';
+import Books from '../components/Books';
 
 class App extends Component {
   componentDidMount() {
@@ -16,8 +17,8 @@ class App extends Component {
           <h2>Welcome to YouShouldRead</h2>
         </div>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+        <Books books={this.props.books} />
       </div>
     );
   }
