@@ -8,7 +8,10 @@ import rootReducer from './reducers';
 import {WrapperApp} from './containers/App';
 import registerServiceWorker from './registerServiceWorker';
 
-const store = createStore(rootReducer, compose(applyMiddleware(thunk), window.devToolsExtension ? window.devToolsExtension() : f => f))
+const store = createStore(
+	rootReducer, compose(applyMiddleware(thunk), 
+	window.devToolsExtension ? window.devToolsExtension() : f => f)
+)
 
 ReactDOM.render(
 	<Provider store={store}>
