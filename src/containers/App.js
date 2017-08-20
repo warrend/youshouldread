@@ -32,7 +32,7 @@ class App extends Component {
             <hr/>
 
             <Route exact path="/" component={Home}/>
-            <Route path="/new" component={About}/>
+            <Route path="/new" component={About}/> 
             <Route path="/books" render={props => <Books books={this.props.books} />}/>
           </div>
         </Router>

@@ -9,3 +9,11 @@ export function fetchBooks() {
       .then(books => dispatch({type: 'FETCH_BOOKS', payload: books}))
   }
 }
+
+export function selectBook(book) {
+	console.log('Selected book' + book.title)
+	return {
+		type: 'SELECT_BOOK',
+		payload: book
+	}
+}
