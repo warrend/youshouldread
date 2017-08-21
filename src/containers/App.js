@@ -4,12 +4,13 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as actions from '../actions/bookActions';
 import Books from '../components/Books';
-import Home from '../components/Home'
+import Home from '../components/Home';
+import BookForm from '../containers/BookForm';
 import {
   BrowserRouter as Router,
   Route,
   Link
-} from 'react-router-dom'
+} from 'react-router-dom';
 require('../css/styles.css');
 
 class App extends Component {
@@ -34,7 +35,7 @@ class App extends Component {
             <hr/>
 
             <Route exact path="/" component={Home}/>
-            <Route path="/new" component={About}/> 
+            <Route path="/new" component={BookForm}/> 
             <Route path="/books" render={props => <Books books={this.props.books} />}/>
           </div>
         </Router>
