@@ -1,6 +1,22 @@
 import React, {Component} from 'react';
 import {Field, reduxForm, SubmissionError} from 'redux-form';
 
+async function submitNewBook(data) {
+	try {
+		let response = await fetch('http://localhost:3000/book', {
+			method: POST, 
+			headers: {
+				'content-type': 'application/json'
+			}
+			body: JSON.stringify(data)
+		})
+		let responseJson = await response.json()
+		return	responseJson.books
+	} catch(error) {
+		console.log(error)
+	}
+}
+
 const submit = ({title='', author='', pages='', review='', genre='', category=''}) => {
 	let error = {}
 	let isError = false
@@ -11,27 +27,31 @@ const submit = ({title='', author='', pages='', review='', genre='', category=''
 	}
 
 	if (author.trim() === '') {
-		error.title = 'Required'
+		error.author = 'Required'
 		isError = true
 	}
 
 	if (pages.trim() === '') {
-		error.title = 'Required'
+		error.pages = 'Required'
 		isError = true
 	}
 
 	if (review.trim() === '') {
-		error.title = 'Required'
+		error.review = 'Required'
 		isError = true
 	}
 
+	if (review.length > 750) {
+		error.review = 'Review needs to be less than 750 characters.'
+	}
+
 	if (genre.trim() === '') {
-		error.title = 'Required'
+		error.genre = 'Required'
 		isError = true
 	}
 
 	if (category.trim() === '') {
-		error.title = 'Required'
+		error.category = 'Required'
 		isError = true
 	}
 
