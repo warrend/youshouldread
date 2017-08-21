@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as actions from '../actions/bookActions';
 import Books from '../components/Books';
+import Home from '../components/Home'
 import {
   BrowserRouter as Router,
   Route,
@@ -41,12 +42,6 @@ class App extends Component {
     );
   }
 }
-
-const Home = () => (
-  <div>
-    <h2>Home</h2>
-  </div>
-)
 
 const About = () => (
   <div>

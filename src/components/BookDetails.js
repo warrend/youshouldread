@@ -10,8 +10,7 @@ class BookDetails extends Component {
 			<div>
 				<h3>{this.props.book.title}</h3>
 				<p>By {this.props.book.author}</p>
-				<p>Number of Pages: {this.props.book.pages}</p>
-				<p>{this.props.book.genre} | {this.props.book.category}</p>
+				<p>{this.props.book.pages} pages | {this.props.book.genre} | {this.props.book.category}</p>
 				<p>Review: {this.props.book.review}</p>
 			</div>
 		)
