@@ -9,6 +9,7 @@ import {
   Route,
   Link
 } from 'react-router-dom'
+require('../css/styles.css');
 
 class App extends Component {
   componentDidMount() {
@@ -17,7 +18,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="container">
         <div className="App-header">
           <h2>Welcome to YouShouldRead</h2>
         </div>

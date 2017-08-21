@@ -10,8 +10,8 @@ export function fetchBooks() {
   }
 }
 
-export function selectBook(book) {
-	console.log('Selected book' + book.title)
+export const selectBook = (book) => {
+	console.log('Selected book ' + book.title)
 	return {
 		type: 'SELECT_BOOK',
 		payload: book

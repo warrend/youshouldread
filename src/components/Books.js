@@ -2,16 +2,22 @@ import React from 'react';
 import {selectBook} from '../actions/bookActions'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
+import BookDetails from '../components/BookDetails';
 
 const Books = props => {
 	return (
 		<div>
-			<h1>List of all books</h1>
-			<ul>
-			{props.books.map((book, index) => {
-				return <li onClick={() => props.selectBook(book)} key={index}>{book.title}</li>
-			})}
-			</ul>
+			<div className="book-list">
+				<h1>List of all books</h1>
+				<ul>
+				{props.books.map((book, index) => {
+					return <li onClick={() => props.selectBook(book)} key={index}>{book.title}</li>
+				})}
+				</ul>
+			</div>
+			<div className="book-details">
+				<BookDetails />
+			</div>
 		</div>
 	)
 }
