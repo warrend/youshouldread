@@ -1,14 +1,51 @@
 import React, {Component} from 'react';
-import {Field, reduxForm} from 'redux-form';
+import {Field, reduxForm, SubmissionError} from 'redux-form';
 
-const submit = (values) => {
-	console.log(values)
+const submit = ({title='', author='', pages='', review='', genre='', category=''}) => {
+	let error = {}
+	let isError = false
+
+	if (title.trim() === '') {
+		error.title = 'Required'
+		isError = true
+	}
+
+	if (author.trim() === '') {
+		error.title = 'Required'
+		isError = true
+	}
+
+	if (pages.trim() === '') {
+		error.title = 'Required'
+		isError = true
+	}
+
+	if (review.trim() === '') {
+		error.title = 'Required'
+		isError = true
+	}
+
+	if (genre.trim() === '') {
+		error.title = 'Required'
+		isError = true
+	}
+
+	if (category.trim() === '') {
+		error.title = 'Required'
+		isError = true
+	}
+
+	if (isError) {
+		throw new SubmissionError(error)
+	} else {
+		// submit form to server
+	}
 }
 
-const renderField = ({label, input, meta: {touched, error}}) => (
+const renderField = ({type, label, input, meta: {touched, error}}) => (
   <div className="input-row">
   	<label>{label}</label>
-    <input {...input} type="text"/>
+    <input {...input} type={type}/>
     {touched && error && 
      <span className="error">{error}</span>}
   </div>
