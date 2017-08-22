@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import * as actions from '../actions/bookActions'
+import Book from '../components/Book'
 
 class NextRead extends Component {
 	constructor(props) {
@@ -21,8 +22,7 @@ class NextRead extends Component {
 	render() {
 		return (
 			<div>
-				<h2>Your next book...</h2>
-				<h3>{this.state.book.title} by {this.state.book.author}</h3>
+				<Book book={this.state.book} />
 			</div>
 		)
 	}
