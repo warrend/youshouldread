@@ -23,6 +23,7 @@ class NextRead extends Component {
 	render() {
 		return (
 			<div>
+				<h1>You should read...</h1>
 				<Book book={this.state.book} />
 				<button onClick={() => this.getNewBook()}>Get Another!</button>
 			</div>
