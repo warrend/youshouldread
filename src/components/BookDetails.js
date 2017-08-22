@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import Book from './Book'
 
 class BookDetails extends Component {
 	render() {
@@ -7,12 +8,7 @@ class BookDetails extends Component {
 			return (<p className="message">Select a book for more details...</p>)
 		}
 		return (
-			<div>
-				<h3>{this.props.book.title}</h3>
-				<p>By {this.props.book.author}</p>
-				<p>{this.props.book.pages} pages | {this.props.book.genre} | {this.props.book.category}</p>
-				<p>Review: {this.props.book.review}</p>
-			</div>
+			<Book book={this.props.book} />
 		)
 	}
 }
