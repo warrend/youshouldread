@@ -13,16 +13,18 @@ class NextRead extends Component {
 		}
 	}
 
-	getNewBook = () => {
-		this.setState = {
+	getNewBook() {
+		console.log("Getting new book...")
+		this.setState({
 			book: Object.assign({}, this.props.books[Math.floor(Math.random()*this.props.books.length)])
-		}
+		})
 	}
 
 	render() {
 		return (
 			<div>
 				<Book book={this.state.book} />
+				<button onClick={() => this.getNewBook()}>Get Another!</button>
 			</div>
 		)
 	}
