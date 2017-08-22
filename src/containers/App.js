@@ -5,7 +5,8 @@ import {bindActionCreators} from 'redux';
 import * as actions from '../actions/bookActions';
 import Books from '../components/Books';
 import Home from '../components/Home';
-import BookForm from '../containers/BookForm';
+// import BookForm from '../containers/BookForm';
+import NextRead from '../containers/NextRead'
 import {
   BrowserRouter as Router,
   Route,
@@ -29,13 +30,15 @@ class App extends Component {
             <ul>
               <li><Link to="/">Home</Link></li>
               <li><Link to="/new">Add a Book</Link></li>
+              <li><Link to="/nextread">Get your next book</Link></li>
               <li><Link to="/books">All Books</Link></li>
             </ul>
 
             <hr/>
 
             <Route exact path="/" component={Home}/>
-            <Route path="/new" component={BookForm}/> 
+            <Route path="/new" component={About}/>
+            <Route path="/nextread" component={NextRead}/> 
             <Route path="/books" render={props => <Books books={this.props.books} />}/>
           </div>
         </Router>

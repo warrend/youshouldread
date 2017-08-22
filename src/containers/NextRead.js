@@ -8,13 +8,13 @@ class NextRead extends Component {
 		super(props);
 
 		this.state = {
-			book: Object.assign({}, this.props.books[Math.floor(Math.random()*this.props.books.length])
+			book: Object.assign({}, this.props.books[Math.floor(Math.random()*this.props.books.length)])
 		}
 	}
 
 	getNewBook = () => {
 		this.setState = {
-			book: Object.assign({}, this.props.books[Math.floor(Math.random()*this.props.books.length])
+			book: Object.assign({}, this.props.books[Math.floor(Math.random()*this.props.books.length)])
 		}
 	}
 
