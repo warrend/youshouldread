@@ -1,71 +1,97 @@
-import React from 'react';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as actions from '../actions/bookActions';
 
+class BookForm extends Component {
+	constructor(props) {
+		super(props);
 
-//import {Field, reduxForm, SubmissionError} from 'redux-form';
+		this.state = {
+			title: '', 
+			author: '', 
+			pages: '', 
+			review: '', 
+			genre: '', 
+			category: ''
+		}
+	}
 
-// function submitNewBook(data){
-// 	return fetch('http://localhost:3000/books', {
-// 			method: 'POST', 
-// 			mode: 'CORS',
-// 			headers: {
-// 				'Content-type': 'application/json'
-// 			},
-// 			body: JSON.stringify(data)
-// 		}).then(
+	submitNewBook = (data) =>{
+		return fetch('http://localhost:3000/books', {
+				method: 'POST', 
+				mode: 'CORS',
+				headers: {
+					'Content-type': 'application/json'
+				},
+				body: JSON.stringify(data)
+			})
+	}
 
-// 		)
-// }
+	// submit = (state) => {
+	// 	let error = {}
+	// 	let isError = false
 
-// function submitData(data) {
-// 	return console.log(data)
-// }
+	// 	if (title.trim() === '') {
+	// 		error.title = 'Required'
+	// 		isError = true
+	// 	}
 
-// const submit = ({title='', author='', pages='', review='', genre='', category=''}) => {
-// 	let error = {}
-// 	let isError = false
+	// 	if (author.trim() === '') {
+	// 		error.author = 'Required'
+	// 		isError = true
+	// 	}
 
-// 	if (title.trim() === '') {
-// 		error.title = 'Required'
-// 		isError = true
-// 	}
+	// 	if (pages.trim() === '') {
+	// 		error.pages = 'Required'
+	// 		isError = true
+	// 	}
 
-// 	if (author.trim() === '') {
-// 		error.author = 'Required'
-// 		isError = true
-// 	}
+	// 	if (review.trim() === '') {
+	// 		error.review = 'Required'
+	// 		isError = true
+	// 	}
 
-// 	if (pages.trim() === '') {
-// 		error.pages = 'Required'
-// 		isError = true
-// 	}
+	// 	if (review.length > 750) {
+	// 		error.review = 'Review needs to be less than 750 characters.'
+	// 	}
 
-// 	if (review.trim() === '') {
-// 		error.review = 'Required'
-// 		isError = true
-// 	}
+	// 	if (genre.trim() === '') {
+	// 		error.genre = 'Required'
+	// 		isError = true
+	// 	}
 
-// 	if (review.length > 750) {
-// 		error.review = 'Review needs to be less than 750 characters.'
-// 	}
+	// 	if (category.trim() === '') {
+	// 		error.category = 'Required'
+	// 		isError = true
+	// 	}
 
-// 	if (genre.trim() === '') {
-// 		error.genre = 'Required'
-// 		isError = true
-// 	}
+	// 	if (isError) {
+	// 		throw new SubmissionError(error)
+	// 	} else {
+	// 		this.submitNewBook({title, author, pages, review, genre, category })
+	// 			.then(data => console.log(data))
+	// 	}
+	// }
+	render() {
+		return(
+			<div>Hi, I'm a form!</div>
+		)
+	}
+}
 
-// 	if (category.trim() === '') {
-// 		error.category = 'Required'
-// 		isError = true
-// 	}
+const mapStateToProps = state => {
+  return {
+    loading: state.loading,
+    books: state.books
+  }
+}
 
-// 	if (isError) {
-// 		throw new SubmissionError(error)
-// 	} else {
-// 		// submitNewBook({title, author, pages, review, genre, category })
-// 		// 	.then(data => console.log(data))
-// 		submitData(submit)
-// 	}
-// }
+const mapDispatchToProps = dispatch => {
+  return {actions: bindActionCreators(actions, dispatch)}
+}
+
+export default BookForm = connect(mapStateToProps, mapDispatchToProps)(BookForm)
 
 // const renderField = ({type, label, input, meta: {touched, error}}) => (
 //   <div className="input-row">
@@ -110,7 +136,5 @@ import React from 'react';
 // 	</form>
 // )
 
-// const BookForm = reduxForm({form: 'addBook'})(BookFormFun)
-
-// export default BookForm 
+// export default BookFormFun
 
