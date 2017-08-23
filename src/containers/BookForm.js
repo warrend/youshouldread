@@ -17,16 +17,52 @@ class BookForm extends Component {
 		}
 	}
 
-	submitNewBook = (data) =>{
-		return fetch('http://localhost:3000/books', {
-				method: 'POST', 
-				mode: 'CORS',
-				headers: {
-					'Content-type': 'application/json'
-				},
-				body: JSON.stringify(data)
-			})
-	}
+	// submitNewBook = (data) =>{
+	// 	return fetch('http://localhost:3000/books', {
+	// 			method: 'POST', 
+	// 			mode: 'CORS',
+	// 			headers: {
+	// 				'Content-type': 'application/json'
+	// 			},
+	// 			body: JSON.stringify(data)
+	// 		})
+	// }
+
+	handleInputChangeTitle = (event) => {
+    this.setState({
+      title: event.target.value
+    });
+  }
+
+  handleInputChangeAuthor = (event) => {
+    this.setState({
+      author: event.target.value
+    });
+  }
+
+  handleInputChangePages = (event) => {
+    this.setState({
+      pages: event.target.value
+    });
+  }
+
+  handleInputChangeReview = (event) => {
+    this.setState({
+      review: event.target.value
+    });
+  }
+
+  handleInputChangeGenre = (event) => {
+    this.setState({
+      genre: event.target.value
+    });
+  }
+
+  handleInputChangeCategory = (event) => {
+    this.setState({
+      category: event.target.value
+    });
+  }
 
 	// submit = (state) => {
 	// 	let error = {}
@@ -75,7 +111,61 @@ class BookForm extends Component {
 	// }
 	render() {
 		return(
-			<div>Hi, I'm a form!</div>
+			<form>
+				<div>
+					<label>Title</label>
+					<input name="title" value={this.state.title} onChange={event => this.handleInputChangeTitle(event)} type="text" />
+				</div>
+
+				
+				<div>
+					<label>Author</label>
+					<input name="author" value={this.state.title} onChange={event => this.handleInputChangeAuthor(event)} type="text" />
+				</div>
+				
+
+				<div>
+					<label>Pages</label>
+					<input name="pages" value={this.state.title} onChange={event => this.handleInputChangePages(event)} type="text" />
+				</div>
+				
+
+				<div>
+					<label>Category</label>
+					<input name="category" value={this.state.title} onChange={event => this.handleInputChangeCategory(event)} type="text" />
+				</div>
+				
+
+				<div>
+					<label>Review</label>
+					<input name="review" value={this.state.title} onChange={event => this.handleInputChangeReview(event)} type="text" />
+				</div>
+
+				<div>
+		      <label>
+		        <input
+		          name="genre"
+		          type="radio"
+		          value="fiction"
+		          onChange={event => this.handleInputChangeReview(event)}
+		          checked
+		        />{' '}
+		        Fiction
+		      </label>
+		      <label>
+		        <input
+		          name="genre"
+		          type="radio"
+		          value="nonfiction"
+		          onChange={event => this.handleInputChangeReview(event)}
+		        />{' '}
+		        Nonfiction
+		      </label>
+		    </div>
+		    <div className="submit-button">
+ 					<button type="submit">Add</button>
+		 		</div>
+			</form>
 		)
 	}
 }
