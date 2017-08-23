@@ -64,6 +64,11 @@ class BookForm extends Component {
     });
   }
 
+  handleSubmit = (event) => {
+  	event.preventDefault()
+  	console.log(this.state)
+  }
+
 	// submit = (state) => {
 	// 	let error = {}
 	// 	let isError = false
@@ -111,7 +116,7 @@ class BookForm extends Component {
 	// }
 	render() {
 		return(
-			<form>
+			<form onSubmit={event => this.handleSubmit(event)}>
 				<div>
 					<label>Title</label>
 					<input name="title" value={this.state.title} onChange={event => this.handleInputChangeTitle(event)} type="text" />
@@ -120,25 +125,25 @@ class BookForm extends Component {
 				
 				<div>
 					<label>Author</label>
-					<input name="author" value={this.state.title} onChange={event => this.handleInputChangeAuthor(event)} type="text" />
+					<input name="author" value={this.state.author} onChange={event => this.handleInputChangeAuthor(event)} type="text" />
 				</div>
 				
 
 				<div>
 					<label>Pages</label>
-					<input name="pages" value={this.state.title} onChange={event => this.handleInputChangePages(event)} type="text" />
+					<input name="pages" value={this.state.pages} onChange={event => this.handleInputChangePages(event)} type="text" />
 				</div>
 				
 
 				<div>
 					<label>Category</label>
-					<input name="category" value={this.state.title} onChange={event => this.handleInputChangeCategory(event)} type="text" />
+					<input name="category" value={this.state.category} onChange={event => this.handleInputChangeCategory(event)} type="text" />
 				</div>
 				
 
 				<div>
 					<label>Review</label>
-					<input name="review" value={this.state.title} onChange={event => this.handleInputChangeReview(event)} type="text" />
+					<input name="review" value={this.state.review} onChange={event => this.handleInputChangeReview(event)} type="text" />
 				</div>
 
 				<div>
