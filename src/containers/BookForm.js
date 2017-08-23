@@ -152,7 +152,8 @@ class BookForm extends Component {
 		          name="genre"
 		          type="radio"
 		          value="fiction"
-		          onChange={event => this.handleInputChangeReview(event)}
+		          onChange={event => this.handleInputChangeGenre(event)}
+		          checked={this.state.genre === 'fiction'}
 		          checked
 		        />{' '}
 		        Fiction
@@ -162,7 +163,8 @@ class BookForm extends Component {
 		          name="genre"
 		          type="radio"
 		          value="nonfiction"
-		          onChange={event => this.handleInputChangeReview(event)}
+		          checked={this.state.genre === 'nonfiction'}
+		          onChange={event => this.handleInputChangeGenre(event)}
 		        />{' '}
 		        Nonfiction
 		      </label>
