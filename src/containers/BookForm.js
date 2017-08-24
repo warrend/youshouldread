@@ -28,41 +28,50 @@ class BookForm extends Component {
 	// 		})
 	// }
 
-	handleInputChangeTitle = (event) => {
-    this.setState({
-      title: event.target.value
-    });
-  }
+	handleInputChange = (event) => {
+		const name = event.target.name
+		const value = event.target.value
 
-  handleInputChangeAuthor = (event) => {
-    this.setState({
-      author: event.target.value
-    });
-  }
+		this.setState({
+			[name]: value
+		})
+	}
 
-  handleInputChangePages = (event) => {
-    this.setState({
-      pages: event.target.value
-    });
-  }
+	// handleInputChangeTitle = (event) => {
+ //    this.setState({
+ //      title: event.target.value
+ //    });
+ //  }
 
-  handleInputChangeReview = (event) => {
-    this.setState({
-      review: event.target.value
-    });
-  }
+ //  handleInputChangeAuthor = (event) => {
+ //    this.setState({
+ //      author: event.target.value
+ //    });
+ //  }
 
-  handleInputChangeGenre = (event) => {
-    this.setState({
-      genre: event.target.value
-    });
-  }
+ //  handleInputChangePages = (event) => {
+ //    this.setState({
+ //      pages: event.target.value
+ //    });
+ //  }
 
-  handleInputChangeCategory = (event) => {
-    this.setState({
-      category: event.target.value
-    });
-  }
+ //  handleInputChangeReview = (event) => {
+ //    this.setState({
+ //      review: event.target.value
+ //    });
+ //  }
+
+ //  handleInputChangeGenre = (event) => {
+ //    this.setState({
+ //      genre: event.target.value
+ //    });
+ //  }
+
+ //  handleInputChangeCategory = (event) => {
+ //    this.setState({
+ //      category: event.target.value
+ //    });
+ //  }
 
   handleSubmit = (event) => {
   	event.preventDefault()
@@ -119,31 +128,31 @@ class BookForm extends Component {
 			<form onSubmit={event => this.handleSubmit(event)}>
 				<div>
 					<label>Title</label>
-					<input name="title" value={this.state.title} onChange={event => this.handleInputChangeTitle(event)} type="text" />
+					<input name="title" value={this.state.title} onChange={this.handleInputChange} type="text" />
 				</div>
 
 				
 				<div>
 					<label>Author</label>
-					<input name="author" value={this.state.author} onChange={event => this.handleInputChangeAuthor(event)} type="text" />
+					<input name="author" value={this.state.author} onChange={this.handleInputChange} type="text" />
 				</div>
 				
 
 				<div>
 					<label>Pages</label>
-					<input name="pages" value={this.state.pages} onChange={event => this.handleInputChangePages(event)} type="text" />
+					<input name="pages" value={this.state.pages} onChange={this.handleInputChange} type="text" />
 				</div>
 				
 
 				<div>
 					<label>Category</label>
-					<input name="category" value={this.state.category} onChange={event => this.handleInputChangeCategory(event)} type="text" />
+					<input name="category" value={this.state.category} onChange={this.handleInputChange} type="text" />
 				</div>
 				
 
 				<div>
 					<label>Review</label>
-					<input name="review" value={this.state.review} onChange={event => this.handleInputChangeReview(event)} type="text" />
+					<textarea name="review" value={this.state.review} onChange={this.handleInputChange} />
 				</div>
 
 				<div>
@@ -152,9 +161,8 @@ class BookForm extends Component {
 		          name="genre"
 		          type="radio"
 		          value="fiction"
-		          onChange={event => this.handleInputChangeGenre(event)}
+		          onChange={this.handleInputChange}
 		          checked={this.state.genre === 'fiction'}
-		          checked
 		        />{' '}
 		        Fiction
 		      </label>
@@ -164,7 +172,7 @@ class BookForm extends Component {
 		          type="radio"
 		          value="nonfiction"
 		          checked={this.state.genre === 'nonfiction'}
-		          onChange={event => this.handleInputChangeGenre(event)}
+		          onChange={this.handleInputChange}
 		        />{' '}
 		        Nonfiction
 		      </label>
