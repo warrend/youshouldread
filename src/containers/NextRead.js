@@ -13,6 +13,10 @@ class NextRead extends Component {
 		}
 	}
 
+	componentDidMount() {
+    this.props.actions.fetchBooks()
+  } 
+
 	getNewBook() {
 		console.log("Getting new book...")
 		this.setState({
