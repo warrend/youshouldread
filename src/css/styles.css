@@ -90,7 +90,6 @@ form>div>div>* {
 form button[type="submit"] {
   white-space: nowrap;
   display: inline-block;
-  border-radius: 5px;
   padding: 10px 15px;
   font-size: 20px;
   color: white;
@@ -100,4 +99,8 @@ form button[type="submit"] {
 
 .submit-button {
 	margin-left: 182px;
+}
+
+.radio-button {
+  margin-left: 122px;
 }

@@ -17,16 +17,16 @@ class BookForm extends Component {
 		}
 	}
 
-	// submitNewBook = (data) =>{
-	// 	return fetch('http://localhost:3000/books', {
-	// 			method: 'POST', 
-	// 			mode: 'CORS',
-	// 			headers: {
-	// 				'Content-type': 'application/json'
-	// 			},
-	// 			body: JSON.stringify(data)
-	// 		})
-	// }
+	submitNewBook = (data) =>{
+		return fetch('http://localhost:3000/books', {
+				method: 'POST', 
+				mode: 'CORS',
+				headers: {
+					'Content-type': 'application/json'
+				},
+				body: JSON.stringify(data)
+			})
+	}
 
 	handleInputChange = (event) => {
 		const name = event.target.name
@@ -37,95 +37,62 @@ class BookForm extends Component {
 		})
 	}
 
-	// handleInputChangeTitle = (event) => {
- //    this.setState({
- //      title: event.target.value
- //    });
- //  }
-
- //  handleInputChangeAuthor = (event) => {
- //    this.setState({
- //      author: event.target.value
- //    });
- //  }
-
- //  handleInputChangePages = (event) => {
- //    this.setState({
- //      pages: event.target.value
- //    });
- //  }
-
- //  handleInputChangeReview = (event) => {
- //    this.setState({
- //      review: event.target.value
- //    });
- //  }
-
- //  handleInputChangeGenre = (event) => {
- //    this.setState({
- //      genre: event.target.value
- //    });
- //  }
-
- //  handleInputChangeCategory = (event) => {
- //    this.setState({
- //      category: event.target.value
- //    });
- //  }
-
-  handleSubmit = (event) => {
+  handleOnSubmit = (event) => {
   	event.preventDefault()
   	console.log(this.state)
+  	this.submitNewBook(this.state)
   }
 
-	// submit = (state) => {
-	// 	let error = {}
+	// submitIt = (state) => {
+	// 	let message = {}
 	// 	let isError = false
 
-	// 	if (title.trim() === '') {
-	// 		error.title = 'Required'
+	// 	if (this.title === '') {
+	// 		message.title = 'Required'
 	// 		isError = true
 	// 	}
 
-	// 	if (author.trim() === '') {
-	// 		error.author = 'Required'
+	// 	if (this.author === '') {
+	// 		message.author = 'Required'
 	// 		isError = true
 	// 	}
 
-	// 	if (pages.trim() === '') {
-	// 		error.pages = 'Required'
+	// 	if (this.pages === '') {
+	// 		message.pages = 'Required'
 	// 		isError = true
 	// 	}
 
-	// 	if (review.trim() === '') {
-	// 		error.review = 'Required'
+	// 	if (this.review === '') {
+	// 		message.review = 'Required'
 	// 		isError = true
 	// 	}
 
-	// 	if (review.length > 750) {
-	// 		error.review = 'Review needs to be less than 750 characters.'
+	// 	if (this.review.length > 750) {
+	// 		message.review = 'Review needs to be less than 750 characters.'
 	// 	}
 
-	// 	if (genre.trim() === '') {
-	// 		error.genre = 'Required'
+	// 	if (this.genre === '') {
+	// 		message.genre = 'Required'
 	// 		isError = true
 	// 	}
 
-	// 	if (category.trim() === '') {
-	// 		error.category = 'Required'
+	// 	if (this.category === '') {
+	// 		message.category = 'Required'
 	// 		isError = true
 	// 	}
 
 	// 	if (isError) {
-	// 		throw new SubmissionError(error)
+	// 		console.log("There was an error. Sorry!")
 	// 	} else {
-	// 		this.submitNewBook({title, author, pages, review, genre, category })
-	// 			.then(data => console.log(data))
+	// 		// this.submitNewBook({title, author, pages, review, genre, category })
+	// 		// 	.then(data => console.log(data))
+	// 		console.log("Passed fine.")
 	// 	}
 	// }
+
 	render() {
 		return(
-			<form onSubmit={event => this.handleSubmit(event)}>
+			<form onSubmit={event => this.handleOnSubmit(event)}>
 				<div>
 					<label>Title</label>
 					<input name="title" value={this.state.title} onChange={this.handleInputChange} type="text" />
@@ -155,7 +122,7 @@ class BookForm extends Component {
 					<textarea name="review" value={this.state.review} onChange={this.handleInputChange} />
 				</div>
 
-				<div>
+				<div className="radio-button">
 		      <label>
 		        <input
 		          name="genre"
