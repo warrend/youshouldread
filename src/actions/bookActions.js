@@ -17,3 +17,12 @@ export const selectBook = (book) => {
 		payload: book
 	}
 }
+
+export function bkFetchBooks() {
+  return function(dispatch) {
+    fetch(
+    'http://localhost:3000/books')
+      .then(res => res.json())
+      .then(books => dispatch({type: 'FETCH_BOOKS', payload: books}))
+  }
+}
