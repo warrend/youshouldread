@@ -5,6 +5,8 @@ import {bindActionCreators} from 'redux';
 import * as actions from '../actions/bookActions';
 import Books from '../components/Books';
 import Home from '../components/Home';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 import BookForm from '../containers/BookForm';
 import NextRead from '../containers/NextRead'
 import {
@@ -14,6 +16,8 @@ import {
 } from 'react-router-dom';
 require('../css/styles.css');
 
+injectTapEventPlugin();
+
 class App extends Component {
   componentDidMount() {
     this.props.actions.fetchBooks()
@@ -21,28 +25,30 @@ class App extends Component {
 
   render() {
     return (
-      <div className="container">
-        <div className="App-header">
-          <h2>Welcome to YouShouldRead</h2>
-        </div>
-        <Router>
-          <div>
-            <ul>
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/new">Add a Book</Link></li>
-              <li><Link to="/nextread">Get your next book</Link></li>
-              <li><Link to="/books">All Books</Link></li>
-            </ul>
-
-            <hr/>
-
-            <Route exact path="/" component={Home}/>
-            <Route path="/new" component={BookForm}/>
-            <Route path="/nextread" component={NextRead}/> 
-            <Route path="/books" render={props => <Books books={this.props.books} />}/>
+      <MuiThemeProvider>
+        <div className="container">
+          <div className="App-header">
+            <h2>Welcome to YouShouldRead</h2>
           </div>
-        </Router>
-      </div>
+          <Router>
+            <div>
+              <ul>
+                <li><Link to="/">Home</Link></li>
+                <li><Link to="/new">Add a Book</Link></li>
+                <li><Link to="/nextread">Get your next book</Link></li>
+                <li><Link to="/books">All Books</Link></li>
+              </ul>
+
+              <hr/>
+
+              <Route exact path="/" component={Home}/>
+              <Route path="/new" component={BookForm}/>
+              <Route path="/nextread" component={NextRead}/> 
+              <Route path="/books" render={props => <Books books={this.props.books} />}/>
+            </div>
+          </Router>
+        </div>
+      </MuiThemeProvider>
     );
   }
 }

@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as actions from '../actions/bookActions';
+import {RaisedButton, RadioButtonGroup, RadioButton} from 'material-ui'
+import {ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
 
 class BookForm extends Component {
 	constructor(props) {
@@ -17,17 +19,6 @@ class BookForm extends Component {
 		}
 	}
 
-	// submitNewBook = (data) =>{
-	// 	return fetch('http://localhost:3000/books', {
-	// 			method: 'POST', 
-	// 			mode: 'CORS',
-	// 			headers: {
-	// 				'Content-type': 'application/json'
-	// 			},
-	// 			body: JSON.stringify(data)
-	// 		})		
-	// }
-
 	handleInputChange = (event) => {
 		const name = event.target.name
 		const value = event.target.value
@@ -38,126 +29,100 @@ class BookForm extends Component {
 	}
 
   handleOnSubmit = (event) => {
-  	event.preventDefault()
-  	console.log(this.state)
-  	let message = {}
-  	let isError = false
-
-  	if (this.state.title === '') {
-  		message.title = 'Required'
-  		console.log("Title can't be blank")
-  	} else {	
-  		this.props.submitNewBook(this.state)
-  		console.log("Submitted book.")
-  	}
-
+  	event.preventDefault()  	
+  	this.props.actions.submitNewBook(this.state)
+  	console.log("Submitted book: " + this.state)
   }
 
-	// submitIt = (state) => {
-	// 	let message = {}
-	// 	let isError = false
-
-	// 	if (this.title === '') {
-	// 		message.title = 'Required'
-	// 		isError = true
-	// 	}
-
-	// 	if (this.author === '') {
-	// 		message.author = 'Required'
-	// 		isError = true
-	// 	}
-
-	// 	if (this.pages === '') {
-	// 		message.pages = 'Required'
-	// 		isError = true
-	// 	}
-
-	// 	if (this.review === '') {
-	// 		message.review = 'Required'
-	// 		isError = true
-	// 	}
-
-	// 	if (this.review.length > 750) {
-	// 		message.review = 'Review needs to be less than 750 characters.'
-	// 	}
-
-	// 	if (this.genre === '') {
-	// 		message.genre = 'Required'
-	// 		isError = true
-	// 	}
-
-	// 	if (this.category === '') {
-	// 		message.category = 'Required'
-	// 		isError = true
-	// 	}
-
-	// 	if (isError) {
-	// 		console.log("There was an error. Sorry!")
-	// 	} else {
-	// 		// this.submitNewBook({title, author, pages, review, genre, category })
-	// 		// 	.then(data => console.log(data))
-	// 		console.log("Passed fine.")
-	// 	}
-	// }
-
 	render() {
-		return(
-			<form onSubmit={event => this.handleOnSubmit(event)}>
-				<div>
-					<label>Title</label>
-					<input name="title" value={this.state.title} onChange={this.handleInputChange} type="text" />
-				</div>
+		return(	
+			<ValidatorForm onSubmit={event => this.handleOnSubmit(event)}>
+				
+				<TextValidator 
+					name="title" 
+					floatingLabelText="Title"
+					hintText="The Great Gatsby"
+					value={this.state.title} 
+					onChange={this.handleInputChange} 
+					type="text" 
+					validators={['required']}
+          errorMessages={['this field is required']} />
+
+        <br />
+			
+				<TextValidator 
+					name="author" 
+					floatingLabelText="Author"
+					hintText="Raymond Chandler"
+					value={this.state.author} 
+					onChange={this.handleInputChange} 
+					type="text" 
+					validators={['required']}
+          errorMessages={['this field is required']}
+					/>
+
+				<br />
+			
+				<TextValidator 
+					name="pages" 
+					floatingLabelText="Pages"
+					hintText="345"
+					value={this.state.pages} 
+					onChange={this.handleInputChange} 
+					type="text"
+					validators={['required']}
+          errorMessages={['this field is required']} />
+
+				<br />
+				
+				<TextValidator 
+					name="category" 
+					floatingLabelText="Category"
+					hintText="literary journalism"
+					value={this.state.category} 
+					onChange={this.handleInputChange} 
+					type="text" 
+					validators={['required']}
+          errorMessages={['this field is required']}/>
+				
+				<br />
+				
+				<TextValidator 
+					name="review" 
+					floatingLabelText="Review"
+					hintText="Here's why this needs to be your next book..."
+					value={this.state.review} 
+					onChange={this.handleInputChange} 
+					multiLine={true}
+          rows={6}
+          rowsMax={8}
+					validators={['required']}
+          errorMessages={['this field is required']}/>
 
 				
-				<div>
-					<label>Author</label>
-					<input name="author" value={this.state.author} onChange={this.handleInputChange} type="text" />
-				</div>
-				
-
-				<div>
-					<label>Pages</label>
-					<input name="pages" value={this.state.pages} onChange={this.handleInputChange} type="text" />
-				</div>
-				
-
-				<div>
-					<label>Category</label>
-					<input name="category" value={this.state.category} onChange={this.handleInputChange} type="text" />
-				</div>
-				
-
-				<div>
-					<label>Review</label>
-					<textarea name="review" value={this.state.review} onChange={this.handleInputChange} />
-				</div>
-
-				<div className="radio-button">
-		      <label>
-		        <input
-		          name="genre"
-		          type="radio"
-		          value="fiction"
-		          onChange={this.handleInputChange}
-		          checked={this.state.genre === 'fiction'}
-		        />{' '}
-		        Fiction
-		      </label>
-		      <label>
-		        <input
-		          name="genre"
-		          type="radio"
-		          value="nonfiction"
-		          checked={this.state.genre === 'nonfiction'}
-		          onChange={this.handleInputChange}
-		        />{' '}
-		        Nonfiction
-		      </label>
-		    </div>
-		    <div className="submit-button">
- 					<button type="submit">Add</button>
-		 		</div>
-			</form>
+        <RadioButtonGroup>
+          <RadioButton 
+          	name="genre"
+          	label="Fiction"
+          	value="fiction"
+          	onChange={this.handleInputChange}
+          	checked={this.state.genre === 'fiction'}
+        	/>
+	        <RadioButton
+	          name="genre"
+	          label="nonfiction"
+	          value="nonfiction"
+	          checked={this.state.genre === 'nonfiction'}
+	          onChange={this.handleInputChange}
+	        />
+        </RadioButtonGroup>
+    
+ 				<RaisedButton
+          type="submit"
+          label="Add"
+          />
+		 		
+			</ValidatorForm>
 		)
 	}
 }
