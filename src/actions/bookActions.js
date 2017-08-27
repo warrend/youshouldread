@@ -27,21 +27,22 @@ export function bkFetchBooks() {
   }
 }
 
-export function submitNewBook = (data) =>{
-  return fetch('http://localhost:3000/books', {
-    method: 'POST', 
-    mode: 'CORS',
-    headers: {
-      'Content-type': 'application/json'
-    },
-    body: JSON.stringify(data)
-  }).then(
-      res => dispatch({type: 'SUBMIT_SUCCESS', payload: res}),
-      error => dispatch({type: 'SUBMIT_FAILURE', error: error,
-      suppressGlobalErrorNotification: (
-        error.response &&
-        error.response.status === 400
-      )
+export function submitNewBook(data) {
+  return function(dispatch) {
+    return fetch('http://localhost:3000/books', {
+      method: 'POST', 
+      mode: 'CORS',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    }).then(
+        res => dispatch({type: 'SUBMIT_SUCCESS', payload: res}),
+        error => dispatch({type: 'SUBMIT_FAILURE', error: error,
+        suppressGlobalErrorNotification: (
+          error.response &&
+          error.response.status === 400
+        )
     }))
   }
 }
