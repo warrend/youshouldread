@@ -29,12 +29,35 @@ class BookForm extends Component {
 	}
 
   handleOnSubmit = (event) => {
-  	event.preventDefault()  	
-  	this.props.actions.submitNewBook(this.state)
-  	console.log("Submitted book: " + this.state)
+  	event.preventDefault()
+    console.log(this.state)
+    this.props.actions.submitNewBook(this.state)
+      .then(
+        res => this.props.actions.bkFetchBooks()
+      )
+
+    this.setState({
+			title: '', 
+			author: '', 
+			pages: '', 
+			review: '', 
+			genre: '', 
+			category: ''
+		})
+
+    window.scrollTo(0, 0)
   }
+  	// event.preventDefault() 
+  	// console.log(this.state) 	
+  	//this.props.actions.submitNewBook(this.state)
+  	//console.log("Submitted book: " + this.state)
 
 	render() {
+
+		const buttonStyle = {
+			marginTop: '30px'
+		}
+
 		return(	
 			<ValidatorForm onSubmit={event => this.handleOnSubmit(event)}>
 				
@@ -46,7 +69,7 @@ class BookForm extends Component {
 					onChange={this.handleInputChange} 
 					type="text" 
 					validators={['required']}
-          errorMessages={['this field is required']} />
+          errorMessages={['Add your book title']} />
 
         <br />
 			
@@ -58,7 +81,7 @@ class BookForm extends Component {
 					onChange={this.handleInputChange} 
 					type="text" 
 					validators={['required']}
-          errorMessages={['this field is required']}
+          errorMessages={['Add the author']}
 					/>
 
 				<br />
@@ -71,7 +94,7 @@ class BookForm extends Component {
 					onChange={this.handleInputChange} 
 					type="text"
 					validators={['required']}
-          errorMessages={['this field is required']} />
+          errorMessages={['How many pages?']} />
 
 				<br />
 				
@@ -83,7 +106,7 @@ class BookForm extends Component {
 					onChange={this.handleInputChange} 
 					type="text" 
 					validators={['required']}
-          errorMessages={['this field is required']}/>
+          errorMessages={['Add your book category']}/>
 				
 				<br />
 				
@@ -97,29 +120,27 @@ class BookForm extends Component {
           rows={6}
           rowsMax={8}
 					validators={['required']}
-          errorMessages={['this field is required']}/>
-
-				
-        <RadioButtonGroup>
-          <RadioButton 
-          	name="genre"
-          	label="Fiction"
-          	value="fiction"
-          	onChange={this.handleInputChange}
-          	checked={this.state.genre === 'fiction'}
-        	/>
-	        <RadioButton
-	          name="genre"
+          errorMessages={['Add your review']}/>
+ 				<RadioButtonGroup 
+ 					name="genre" 
+ 					onChange={this.handleInputChange}
+ 					validators={['required']}
+ 					errorMessages={['Fiction or nonfiction?']}
+ 					>
+	        <RadioButton 
+	        	label="Fiction"
+	        	value="fiction"	        	
+	      	/>
+	        <RadioButton	        	
 	          label="nonfiction"
-	          value="nonfiction"
-	          checked={this.state.genre === 'nonfiction'}
-	          onChange={this.handleInputChange}
+	          value="nonfiction"          
 	        />
-        </RadioButtonGroup>
+	      </RadioButtonGroup>
     
  				<RaisedButton
           type="submit"
           label="Add"
+          style={buttonStyle}
           />
 		 		
 			</ValidatorForm>
@@ -139,49 +160,3 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default BookForm = connect(mapStateToProps, mapDispatchToProps)(BookForm)
-
-// const renderField = ({type, label, input, meta: {touched, error}}) => (
-//   <div className="input-row">
-//   	<label>{label}</label>
-//     <input {...input} type={type}/>
-//     {touched && error && 
-//      <span className="error">{error}</span>}
-//   </div>
-// )
-
-// const BookFormFun = ({handleSubmit}) => (
-// 	<form onSubmit={() => handleSubmit(submit)}>
-// 		<Field name="title" label="Title" component={renderField} type="text" />
-// 		<Field name="author" label="Author" component={renderField} type="text" />
-// 		<Field name="pages" label="Pages" component={renderField} type="text" />
-//     <div>
-//       <label>
-//         <Field
-//           name="genre"
-//           component="input"
-//           type="radio"
-//           value="fiction"
-//           checked
-//         />{' '}
-//         Fiction
-//       </label>
-//       <label>
-//         <Field
-//           name="genre"
-//           component="input"
-//           type="radio"
-//           value="nonfiction"
-//         />{' '}
-//         Nonfiction
-//       </label>
-//     </div>
-// 		<Field name="category" label="Category" component={renderField} type="text" />
-// 		<Field name="review" label="Review" component={renderField} type="textarea" />
-// 		<div className="submit-button">
-// 			<button type="submit">Add</button>
-// 		</div>
-// 	</form>
-// )
-
-// export default BookFormFun
-

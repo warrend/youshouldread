@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import * as actions from '../actions/bookActions'
 import Book from '../components/Book'
+import {RaisedButton} from 'material-ui'
 
 class NextRead extends Component {
 	constructor(props) {
@@ -28,7 +29,7 @@ class NextRead extends Component {
 		return (
 			<div>
 				<h1>You should read...</h1>
-				<button onClick={() => this.getNewBook()}>Get Another!</button>
+				<RaisedButton onClick={() => this.getNewBook()} label="Get Another" />
 				<Book book={this.state.book} />
 			</div>
 		)
