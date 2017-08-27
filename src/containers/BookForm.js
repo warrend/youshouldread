@@ -17,16 +17,16 @@ class BookForm extends Component {
 		}
 	}
 
-	submitNewBook = (data) =>{
-		return fetch('http://localhost:3000/books', {
-				method: 'POST', 
-				mode: 'CORS',
-				headers: {
-					'Content-type': 'application/json'
-				},
-				body: JSON.stringify(data)
-			})		
-	}
+	// submitNewBook = (data) =>{
+	// 	return fetch('http://localhost:3000/books', {
+	// 			method: 'POST', 
+	// 			mode: 'CORS',
+	// 			headers: {
+	// 				'Content-type': 'application/json'
+	// 			},
+	// 			body: JSON.stringify(data)
+	// 		})		
+	// }
 
 	handleInputChange = (event) => {
 		const name = event.target.name
@@ -40,7 +40,17 @@ class BookForm extends Component {
   handleOnSubmit = (event) => {
   	event.preventDefault()
   	console.log(this.state)
-  	this.submitNewBook(this.state)
+  	let message = {}
+  	let isError = false
+
+  	if (this.state.title === '') {
+  		message.title = 'Required'
+  		console.log("Title can't be blank")
+  	} else {	
+  		this.props.submitNewBook(this.state)
+  		console.log("Submitted book.")
+  	}
+
   }
 
 	// submitIt = (state) => {
