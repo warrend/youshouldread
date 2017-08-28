@@ -5,14 +5,24 @@ body {
 	margin-top: 25px;
 }
 
-html {
-	margin: 0;
-	padding: 0;
+.menu li a:visited {
+	color: #222;
 }
 
 .full {
 	width: 65%;
 	float: left;
+}
+
+.intro-text {
+	color: #00838F;
+}
+
+.active::before {
+	/*background-color: #efefef;
+	padding: 5px 15px;*/
+	content: '>  ';
+	color: #00838F;
 }
 
 .container {
@@ -69,10 +79,6 @@ html {
 .book-list ul {
 	padding-left: 0;
 	list-style: none;
-}
-
-.menu li a:visited {
-	color: #222;
 }
 
 .book-form {

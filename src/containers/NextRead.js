@@ -26,10 +26,14 @@ class NextRead extends Component {
 	}
 
 	render() {
+		const style = {
+			marginTop: '25px'
+		}
+
 		return (
-			<div className="full">
-				<h1>You should read...</h1>
+			<div className="full" style={style}>
 				<RaisedButton onClick={() => this.getNewBook()} label="Get Another" />
+				<h1>You should read...</h1>
 				<Book book={this.state.book} />
 			</div>
 		)

@@ -128,7 +128,7 @@ class BookForm extends Component {
  					errorMessages={['Fiction or nonfiction?']}
  					>
 	        <RadioButton 
-	        	label="Fiction"
+	        	label="fiction"
 	        	value="fiction"	        	
 	      	/>
 	        <RadioButton	        	

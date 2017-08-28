@@ -12,7 +12,7 @@ import NextRead from '../containers/NextRead'
 import {
   BrowserRouter as Router,
   Route,
-  Link
+  Link, NavLink
 } from 'react-router-dom';
 require('../css/styles.css');
 
@@ -31,11 +31,11 @@ class App extends Component {
           <Router>
             <div>
               <ul className="menu">
-                <li><h3>YouShouldRead</h3></li>
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/new">Add a Book</Link></li>
-                <li><Link to="/nextread">Get your next book</Link></li>
-                <li><Link to="/books">All Books</Link></li>
+                <li><h3 className="intro-text">YouShouldRead</h3></li>
+                <li><NavLink to="/" exact activeClassName="active">Home</NavLink></li>
+                <li><NavLink to="/new" exact activeClassName="active">Add a Book</NavLink></li>
+                <li><NavLink to="/nextread" exact activeClassName="active">Get your next book</NavLink></li>
+                <li><NavLink to="/books" exact activeClassName="active">All Books</NavLink></li>
               </ul>
 
               <Route exact path="/" component={Home}/>
