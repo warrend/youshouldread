@@ -2,6 +2,7 @@ body {
 	font-family: 'Roboto', sans-serif;
 	font-size: 16px;
 	color: #222;
+	margin-top: 25px;
 }
 
 html {
@@ -9,7 +10,7 @@ html {
 	padding: 0;
 }
 
-.home-page {
+.full {
 	width: 65%;
 	float: left;
 }
@@ -20,13 +21,15 @@ html {
 }
 
 .book-list {
-	width: 35%;
+	width: 30%;
 	float: left;
+	border-right: 1px solid #efefef;
 }
 
 .book-details {
 	width: 35%;
 	float: right;
+	padding-top: .5em;
 }
 
 .message {
@@ -43,11 +46,15 @@ html {
 	width: 20%;
 	float: left;
 	margin-top: 0;
-	border: 1px solid #efefef;
+	border-right: 1px solid #efefef;
 	/*background: #efefef;*/
-	padding: 35px 15px 105px 35px;
+	padding: 25px 15px 105px 35px;
 	margin-right: 5%;
-	box-shadow: -1px 3px 14px -2px rgba(0,0,0,0.25);
+	/*box-shadow: -1px 3px 14px -2px rgba(0,0,0,0.25);*/
+}
+
+.menu h3 {
+	margin-top: 0;
 }
 
 .menu li {
@@ -57,6 +64,11 @@ html {
 
 .menu a {
 	text-decoration: none;
+}
+
+.book-list ul {
+	padding-left: 0;
+	list-style: none;
 }
 
 .menu li a:visited {

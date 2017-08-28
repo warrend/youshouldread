@@ -50,12 +50,6 @@ class App extends Component {
   }
 }
 
-const About = () => (
-  <div>
-    <h2>About</h2>
-  </div>
-)
-
 const mapStateToProps = (state) => {
   return {
     loading: state.loading,
