@@ -28,12 +28,10 @@ class App extends Component {
     return (
       <MuiThemeProvider>
         <div className="container">
-          <div className="App-header">
-            <h2>Welcome to YouShouldRead</h2>
-          </div>
           <Router>
             <div>
               <ul className="menu">
+                <li><h3>YouShouldRead</h3></li>
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/new">Add a Book</Link></li>
                 <li><Link to="/nextread">Get your next book</Link></li>

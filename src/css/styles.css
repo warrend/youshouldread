@@ -4,18 +4,28 @@ body {
 	color: #222;
 }
 
+html {
+	margin: 0;
+	padding: 0;
+}
+
+.home-page {
+	width: 65%;
+	float: left;
+}
+
 .container {
 	width: 80%;
 	margin: 0 auto;
 }
 
 .book-list {
-	width: 50%;
+	width: 35%;
 	float: left;
 }
 
 .book-details {
-	width: 50%;
+	width: 35%;
 	float: right;
 }
 
@@ -30,12 +40,31 @@ body {
 
 .menu {
 	padding-left: 0;
+	width: 20%;
+	float: left;
+	margin-top: 0;
+	border: 1px solid #efefef;
+	/*background: #efefef;*/
+	padding: 35px 15px 105px 35px;
+	margin-right: 5%;
+	box-shadow: -1px 3px 14px -2px rgba(0,0,0,0.25);
 }
 
 .menu li {
 	list-style: none;
+	margin-bottom: .33em;
 }
 
-ul .menu li a {
+.menu a {
 	text-decoration: none;
 }
+
+.menu li a:visited {
+	color: #222;
+}
+
+.book-form {
+	float: left;
+	width: 40%;
+}
+

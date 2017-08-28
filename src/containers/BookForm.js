@@ -59,7 +59,7 @@ class BookForm extends Component {
 		}
 
 		return(	
-			<ValidatorForm onSubmit={event => this.handleOnSubmit(event)}>
+			<ValidatorForm className="book-form" onSubmit={event => this.handleOnSubmit(event)}>
 				
 				<TextValidator 
 					name="title" 
