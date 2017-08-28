@@ -10,8 +10,20 @@ const Books = props => {
 			<div className="book-list">
 				<h1>List of all books</h1>
 				<ul>
+				<li className="bold">Fiction</li>
 				{props.books.map((book, index) => {
-					return <li onClick={() => props.selectBook(book)} key={index}>{book.title}</li>
+					if (book.genre === 'fiction') {
+						return <li onClick={() => props.selectBook(book)} key={index}>{book.title}</li>
+					}
+				})}
+				</ul>
+
+				<ul>
+				<li className="bold">Nonfiction</li>
+				{props.books.map((book, index) => {
+					if (book.genre === 'nonfiction') {
+						return <li onClick={() => props.selectBook(book)} key={index}>{book.title}</li>
+					}
 				})}
 				</ul>
 			</div>
@@ -21,6 +33,7 @@ const Books = props => {
 		</div>
 	)
 }
+
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({selectBook: selectBook}, dispatch)
