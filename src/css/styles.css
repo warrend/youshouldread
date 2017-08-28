@@ -28,6 +28,14 @@ body {
 	margin-left: 182px;
 }
 
-.radio-button {
-  margin-left: 122px;
+.menu {
+	padding-left: 0;
+}
+
+.menu li {
+	list-style: none;
+}
+
+ul .menu li a {
+	text-decoration: none;
 }

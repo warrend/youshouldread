@@ -24,6 +24,7 @@ class App extends Component {
   } 
 
   render() {
+  
     return (
       <MuiThemeProvider>
         <div className="container">
@@ -32,14 +33,12 @@ class App extends Component {
           </div>
           <Router>
             <div>
-              <ul>
+              <ul className="menu">
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/new">Add a Book</Link></li>
                 <li><Link to="/nextread">Get your next book</Link></li>
                 <li><Link to="/books">All Books</Link></li>
               </ul>
-
-              <hr/>
 
               <Route exact path="/" component={Home}/>
               <Route path="/new" component={BookForm}/>
