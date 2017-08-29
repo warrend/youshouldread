@@ -11,8 +11,7 @@ import BookForm from '../containers/BookForm';
 import NextRead from '../containers/NextRead'
 import {
   BrowserRouter as Router,
-  Route,
-  Link, NavLink
+  Route, NavLink
 } from 'react-router-dom';
 require('../css/styles.css');
 

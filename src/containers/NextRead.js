@@ -43,7 +43,7 @@ class NextRead extends Component {
 const mapStateToProps = state => {
   return {
     loading: state.loading,
-    books: state.books
+    books: state.books, 
   }
 }
 

@@ -19,6 +19,10 @@ class BookForm extends Component {
 		}
 	}
 
+	componentDidMount() {
+    this.props.actions.resetSuccessHandler()
+  }
+
 	handleInputChange = (event) => {
 		const name = event.target.name
 		const value = event.target.value
@@ -47,10 +51,6 @@ class BookForm extends Component {
 
     window.scrollTo(0, 0)
   }
-  	// event.preventDefault() 
-  	// console.log(this.state) 	
-  	//this.props.actions.submitNewBook(this.state)
-  	//console.log("Submitted book: " + this.state)
 
 	render() {
 
@@ -59,6 +59,11 @@ class BookForm extends Component {
 		}
 
 		return(	
+			<div>
+			<div>
+        <div className='message'>{this.props.error}</div>
+      </div>
+
 			<ValidatorForm className="book-form" onSubmit={event => this.handleOnSubmit(event)}>
 				
 				<TextValidator 
@@ -144,6 +149,7 @@ class BookForm extends Component {
           />
 		 		
 			</ValidatorForm>
+			</div>
 		)
 	}
 }
@@ -151,7 +157,8 @@ class BookForm extends Component {
 const mapStateToProps = state => {
   return {
     loading: state.loading,
-    books: state.books
+    books: state.books,
+    error: state.error
   }
 }
 

@@ -8,23 +8,19 @@ const Books = props => {
 	return (
 		<div>
 			<div className="book-list">
-				<h1>List of all books</h1>
+				<h1>All books</h1>
 				<ul>
 				<li className="bold">Fiction</li>
-				{props.books.map((book, index) => {
-					if (book.genre === 'fiction') {
+					{props.books.filter(book => book.genre === 'fiction').map((book, index) => {
 						return <li onClick={() => props.selectBook(book)} key={index}>{book.title}</li>
-					}
-				})}
+					})}
 				</ul>
 
 				<ul>
 				<li className="bold">Nonfiction</li>
-				{props.books.map((book, index) => {
-					if (book.genre === 'nonfiction') {
+					{props.books.filter(book => book.genre === 'nonfiction').map((book, index) => {
 						return <li onClick={() => props.selectBook(book)} key={index}>{book.title}</li>
-					}
-				})}
+					})}
 				</ul>
 			</div>
 			<div className="book-details">
@@ -33,7 +29,6 @@ const Books = props => {
 		</div>
 	)
 }
-
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({selectBook: selectBook}, dispatch)
