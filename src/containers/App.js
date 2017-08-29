@@ -5,6 +5,7 @@ import {bindActionCreators} from 'redux';
 import * as actions from '../actions/bookActions';
 import Books from '../components/Books';
 import Home from '../components/Home';
+import Contact from '../components/Contact';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import BookForm from '../containers/BookForm';
@@ -35,10 +36,12 @@ class App extends Component {
                 <li><NavLink to="/new" exact activeClassName="active">Add a Book</NavLink></li>
                 <li><NavLink to="/nextread" exact activeClassName="active">Get your next book</NavLink></li>
                 <li><NavLink to="/books" exact activeClassName="active">All Books</NavLink></li>
+                <li><NavLink to="/contact" exact activeClassName="active">Contact</NavLink></li>
               </ul>
 
               <Route exact path="/" component={Home}/>
               <Route path="/new" component={BookForm}/>
+              <Route path="/contact" component={Contact}/>
               <Route path="/nextread" component={NextRead}/> 
               <Route path="/books" render={props => <Books books={this.props.books} />}/>
             </div>
