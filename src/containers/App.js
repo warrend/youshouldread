@@ -9,7 +9,7 @@ import Contact from '../components/Contact';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import BookForm from '../containers/BookForm';
-import NextRead from '../containers/NextRead'
+import NextRead from '../containers/NextRead';
 import {
   BrowserRouter as Router,
   Route, NavLink
