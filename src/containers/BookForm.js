@@ -35,7 +35,7 @@ class BookForm extends Component {
   handleOnSubmit = (event) => {
   	event.preventDefault()
     console.log(this.state)
-    this.props.actions.submitNewBook(this.state)
+    this.props.actions.submitNewBook(this.state, this.props.history)
       .then(
         res => this.props.actions.bkFetchBooks()
       )

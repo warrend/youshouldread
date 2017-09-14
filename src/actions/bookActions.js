@@ -27,7 +27,7 @@ export function bkFetchBooks() {
   }
 }
 
-export function submitNewBook(data) {
+export function submitNewBook(data, history) {
   return function(dispatch) {
     return fetch('http://localhost:3000/books', {
       method: 'POST', 
@@ -36,16 +36,22 @@ export function submitNewBook(data) {
         'Content-type': 'application/json'
       },
       body: JSON.stringify(data)
-    }).then(
-        res => dispatch({type: 'SUBMIT_SUCCESS', payload: res}),
-        error => dispatch({type: 'SUBMIT_FAILURE', error: error,
-        suppressGlobalErrorNotification: (
-          error.response &&
-          error.response.status === 400
-        )
-    }))
+    })
+      .then(res => {
+        dispatch({type: 'SUBMIT_SUCCESS'})
+        return res.json()
+      })
+      .then(book => {
+        dispatch({type: 'ADD_BOOK_SUCCESS', payload: book})
+        history.push("/books")
+      })  
   }
 }
+// error => dispatch({type: 'SUBMIT_FAILURE', error: error,
+//         suppressGlobalErrorNotification: (
+//           error.response &&
+//           error.response.status === 400
+//         )
 
 export function resetSuccessHandler() {
   return function(dispatch) {
