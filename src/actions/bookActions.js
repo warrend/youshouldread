@@ -27,10 +27,10 @@ export const selectBook = (book) => {
 //   }
 // }
 
-export const addLike = (book, likesCount) => {
+export const addLike = (bookId, likesCount) => {
   return function(dispatch) {
-    console.log("Like book with id: " + book);
-    return fetch('http://localhost:3000/books/' + book, {
+    console.log("Like book with id: " + bookId);
+    return fetch('http://localhost:3000/books/' + bookId, {
       method: 'PATCH',
       mode: 'CORS',
       headers: {
@@ -38,8 +38,8 @@ export const addLike = (book, likesCount) => {
       },
       body: JSON.stringify({likes: likesCount})
     }).then(res => res.json())
-      .then(book => console.log(book))
-      .then(book => dispatch({type: 'ADD_LIKE', book, likes: likesCount}))
+      .then(book => console.log("The response is: " + book))
+      .then(book => dispatch({type: 'ADD_LIKE', bookId, likes: likesCount}))
   }
 }
 
