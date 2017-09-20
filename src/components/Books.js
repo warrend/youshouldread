@@ -6,11 +6,10 @@ import BookDetails from '../components/BookDetails';
 import BookSingle from '../components/BookSingle'
 
 class Books extends Component {
-	constructor(props) {
-		super(props);
+	// constructor(props) {
+	// 	super(props);
 
-	}
-
+	// }
 	render() {
 		return (
 			<div>
@@ -19,14 +18,14 @@ class Books extends Component {
 					<ul>
 					<li className="bold">Fiction</li>
 						{this.props.books.filter(book => book.genre === 'fiction').map((book, index) => {
-							return <li><BookSingle book={book} key={index} /></li>
+							return <li key={book.id}><BookSingle book={book} /></li>
 						})}
 					</ul>
 
 					<ul>
 					<li className="bold">Nonfiction</li>
 						{this.props.books.filter(book => book.genre === 'nonfiction').map((book, index) => {
-							return <li><BookSingle book={book} key={index} /></li>
+							return <li key={book.id}><BookSingle book={book} /></li>
 						})}
 					</ul>
 				</div>
@@ -38,15 +37,15 @@ class Books extends Component {
 	}
 }
 
-const mapStateToProps = state => {
-  return {
-    loading: state.loading,
-    books: state.books
-  }
-}
+// const mapStateToProps = state => {
+//   return {
+//     loading: state.loading,
+//     books: state.books
+//   }
+// }
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({selectBook: selectBook}, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Books);
+export default connect(null, mapDispatchToProps)(Books);

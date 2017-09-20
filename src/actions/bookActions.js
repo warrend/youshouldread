@@ -18,12 +18,28 @@ export const selectBook = (book) => {
 	}
 }
 
-export function bkFetchBooks() {
+// export function bkFetchBooks() {
+//   return function(dispatch) {
+//     fetch(
+//     'http://localhost:3000/books')
+//       .then(res => res.json())
+//       .then(books => dispatch({type: 'FETCH_BOOKS', payload: books}))
+//   }
+// }
+
+export const addLike = (book, likesCount) => {
   return function(dispatch) {
-    fetch(
-    'http://localhost:3000/books')
-      .then(res => res.json())
-      .then(books => dispatch({type: 'FETCH_BOOKS', payload: books}))
+    console.log("Like book with id: " + book);
+    return fetch('http://localhost:3000/books/' + book, {
+      method: 'PATCH',
+      mode: 'CORS',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify({likes: likesCount})
+    }).then(res => res.json())
+      .then(book => console.log(book))
+      .then(book => dispatch({type: 'ADD_LIKE', book, likes: likesCount}))
   }
 }
 
